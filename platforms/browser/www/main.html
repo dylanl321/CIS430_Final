@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- GET HYPED for a lot of confusing html and even more confusing javascript -->
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>ASU Book ME</title>
+    <!-- Path to Framework7 Library CSS-->
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+    <link href="./css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/framework7-icons.css">
+    <link href="./css/datepicker3.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+  <body>
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+      </div>
+    </div>
+    <!-- Views-->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class-->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+          <!-- Navbar inner for Index page-->
+          <div data-page="index" class="navbar-inner">
+            <!-- We have home navbar without left link-->
+            <div class="center sliding">ASU Book Me</div>
+            <div class="right">
+              <!-- Right link contains only icon - additional "icon-only" class-->
+              <a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+            </div>
+          </div>
+          <!-- Navbar inner for About page-->
+          <div data-page="about" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">About Us</div>
+          </div>
+          <!-- Navbar inner for Services page-->
+          <div data-page="services" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Services</div>
+          </div>
+          <!-- Navbar inner for Form page-->
+          <div data-page="form" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Book Appointment</div>
+          </div>
+
+          <div data-page="times" class="navbar-inner cached">
+            <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+            <div class="center sliding">Available Times</div>
+          </div>
+        <div data-page="student" class="navbar-inner cached">
+          <div class="left sliding"><a href="#" class="back link"> <i class="icon icon-back"></i><span>Back</span></a></div>
+          <div class="center sliding">Confirm Booking</div>
+        </div>
+      </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Index Page-->
+
+          <!-- This is the main page and defaut page shown. It does need to be updated and look better. -->
+          <div data-page="index" class="page">
+            <!-- Scrollable page content-->
+
+            <div class="page-content">
+              <div class="content-block-title">Welcome to ASU Book Me!</div>
+              <div class="content-block">
+                <img data-src="./images/asu_bookMe.png" class="lazy" width="50%"/>
+                </div>
+                <div class="content-block">
+                <div class="content-block-inner">
+                  <p>Press Book Appointment below to select a time and date to meet with your professor!</p>
+                </div>
+              </div>
+              <div class="content-block-title">Navigation</div>
+              <div class="list-block">
+                <ul>
+                  <li><a href="#about" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">About</div>
+                        </div>
+                      </div></a></li>
+                  <li><a href="#form" class="item-link">
+                      <div class="item-content">
+                        <div class="item-inner">
+                          <div class="item-title">Book Appointment</div>
+                        </div>
+                      </div></a></li>
+
+                </ul>
+              </div>
+
+
+          <!-- About Page-->
+          <!-- This page is only for showing and selecting the time slot after the other feilds are chosen. I put it in a new page
+          due to the possibility of a large amount of data and the way the data is held in the sceduler and seleceted couldnt
+          fit in a combo box or list of check boxes. I know its seemingly out of order but it works. -->
+          <div data-page="times" class="page cached">
+            <div class="page-content">
+              <div class="content-block-title">Select a Start Time</div>
+                      <div class="list-block">
+                        <ul id="time">
+                          <div class="col-sm-12" id="busy">All slots are busy.</div>
+                        </ul>
+
+                      </div>
+              </div>
+            </div>
+
+          <!-- This is the about page and still needs to be changed. -->
+          <div data-page="about" class="page cached">
+            <div class="page-content">
+              <div class="content-block-title">About ASU Book ME</div>
+                <div class="content-block">
+                  <img data-src="./images/asu.png" class="lazy" width="100%"/>
+                  <div class="content-block-inner">
+                    <p>ASU Book Me was created in November 2016 by Marete Kirimi, Dominique Dale,
+                       Dylan Lewis, Michealla Lindsey, and Santiago Lopez; members of Team Linq.
+                       The ASU Book ME app was created to help ASU students have one location to find
+                       out their professor’s availability. The application allows a student to book a
+                       time slot for a professor’s available office hours. The application will notify
+                       the professor by email that an appointment has been booked after the user confirms
+                       their selection.
+                   </p>
+                 </div>
+                </div>
+            </div>
+    </div>
+          <!-- Form Page-->
+
+
+          <!-- This is the main form page where the inital selections occur. All options are
+          dynamically created by the scheduler file and then added to the dom occording to the div ids.
+          All documentaion on this was found on the frtamework7 page. The form section in docs
+          helped me the most in usnderstanded the setup and layout.
+           -->
+          <div data-page="form" class="page cached">
+            <div class="page-content">
+              <div class="content-block-title">Begin Booking</div>
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <!-- <div class="item-content">
+                      <div class="item-media"><i class="icons f7-icons">book_fill</i></div>
+                      <div class="item-inner">
+                        <div class="item-title label">School</div>
+                        <div class="item-input">
+                          <select id="event_id">
+                            <option></option>
+                          </select>
+                        </div>
+                      </div>
+                    </div> -->
+
+                                       <!-- select -->
+
+                        <a href="#" class="item-link smart-select" data-page-title="Professors" data-back-text="Go back">
+                          <select id="event_id" name="school">
+                            <option></option>
+                          </select>
+
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">book_fill</i></div>
+                            <div class="item-inner">
+                              <!-- Select label -->
+                              <div class="item-title">School</div>
+                              <!-- Selected value, not required -->
+                              <div class="item-after">Select</div>
+                            </div>
+                          </div>
+                        </a>
+
+                      <!-- <div class="item-media"><i class="icon f7-icons">persons_fill</i></div>
+                      <div class="item-inner">
+                        <div class="item-title label">Professor</div>
+                        <div class="item-input">
+                          <select id="unit_id">
+                            <option></option>
+                          </select>
+                        </div>
+                      </div> -->
+
+
+
+                  </li>
+                  <li>
+                                            <!-- sele
+                                            ct -->
+
+                        <a href="#" data-searchbar="true" data-searchbar-placeholder="Search Professors" class="item-link smart-select" data-page-title="Professors" data-back-text="Go back">
+                          <select id="unit_id" name="professors">
+                            <option></option>
+                          </select>
+
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">persons_fill</i></div>
+                            <div class="item-inner">
+                              <!-- Select label -->
+                              <div class="item-title">Professors</div>
+                              <!-- Selected value, not required -->
+                              <div class="item-after">Select</div>
+                            </div>
+                          </div>
+                        </a>
+
+                      <!-- <div class="item-media"><i class="icon f7-icons">persons_fill</i></div>
+                      <div class="item-inner">
+                        <div class="item-title label">Professor</div>
+                        <div class="item-input">
+                          <select id="unit_id">
+                            <option></option>
+                          </select>
+                        </div>
+                      </div> -->
+
+                  </li>
+                </ul>
+              </div>
+                  <!-- <div class="list-block">
+                    <ul>
+                      <li> <div class="item-content">
+                      <div class="item-media"><i class="icon f7-icons">today_fill</i></div>
+                      <div class="item-inner">
+                        <div class="item-title label">Date</div>
+                        </div></div>
+                        <div class="item-input">
+                          <div id="date"></div>
+                        </div>
+                      </li>
+                    </ul>
+                      </div> -->
+
+
+                      <div class="content-block-title">Select Date</div>
+                      <div class="card">
+                        <div class="card-content">
+                          <div class="card-content-inner">
+                            <div style="margin:0 auto"  class="col-auto" id="date"></div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                  <div class="list-block">
+                    <ul>
+                      <li><a href="#times" class="item-link">
+                          <div class="item-content">
+                            <div class="item-media"><i class="icon f7-icons">time_fill</i></div>
+                            <div id="selectedTime" class="item-inner">
+                              <div id="noTimes" class="item-title">Select Times</div>
+                            </div>
+                          </div></a></li>
+                    </ul>
+                  </div>
+<!-- I was testing to see if we could use the built in clendar for a better ui, and more native feel but the javascript is too
+confusing on how they parse the blocked dates. I gave up further research and development because there is no point. -->
+
+                  <!-- <div class="content-block-title">Disabled Dates</div>
+                    <div class="list-block">
+                      <ul>
+                        <li>
+                          <div class="item-content">
+                            <div class="item-inner">
+                              <div class="item-input">
+                                <input type="text" placeholder="Select dates" readonly id="calendar-disabled">
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div> -->
+                <div class="row">
+                  <div class="col-100">
+                    <a href="#" id="book" class="button button-big button-fill color-green">Book Appt.</a>
+                  </div>
+                </div>
+              <!-- Bottom Toolbar- I do not like this at all-->
+              <!-- <div class="toolbar">
+                <div class="toolbar-inner"><a href="#" class="link">Link 1</a><a href="#" class="link">Link 2</a></div>
+              </div>
+            </div> -->
+
+
+
+<!-- This is the display for all student info and the confirmation. All text feilds are propergated by the scheduler.js
+I edited the scheduler.js to include the additional forms and be able to match the structure of the other form items.
+This is why asu id is not on this page as it is dynamically created when it gets captured by the api.   -->
+              <div data-page="student" class="page cached">
+                <div class="page-content">
+
+                    <div class="content-block-title">Verify Information</div>
+                      <div class="list-block">
+                        <ul>
+                          <li class="item-content">
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Selected School</div>
+                              <div id="event_name" class="item-after"></div>
+                            </div>
+                          </li>
+                          <li class="item-content">
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Professor</div>
+                              <div id="unit_name" class="item-after"></div>
+                            </div>
+                          </li>
+                          <li class="item-content">
+                            <div class="item-media"><i class="icon icon-f7"></i></div>
+                            <div class="item-inner">
+                              <div class="item-title">Date</div>
+                              <div id="date_start" class="item-after"></div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="content-block-title">Student Information</div>
+                        <div class="list-block">
+                          <ul>
+                            <li>
+                              <div class="item-content">
+                                <div class="item-media"><i class="icon f7-icons">person</i></div>
+                                <div class="item-inner">
+                                  <div class="item-title label">Name</div>
+                                  <div class="item-input">
+                                    <input type="text" id="name" placeholder="Your name">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="item-content">
+                                <div class="item-media"><i class="icon f7-icons">email</i></div>
+                                <div class="item-inner">
+                                  <div class="item-title label">E-mail</div>
+                                  <div class="item-input">
+                                    <input type="email" id="email" placeholder="E-mail">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+                              <div class="item-content">
+                                <div class="item-media"><i class="icon f7-icons">phone</i></div>
+                                <div class="item-inner">
+                                  <div class="item-title label">Phone</div>
+                                  <div class="item-input">
+                                    <input type="email" id="phone" placeholder="Phone">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li>
+
+
+                            <div id="additional-fields" class="item-content">
+
+                              </div>
+                            </li>
+                          </ul>
+
+                          <div class="row">
+                            <div class="col-50">
+                              <a href="#" id="cancel" class="button button-big button-fill color-red">Cancel</a>
+                            </div>
+                            <div class="col-50">
+                              <a href="#"  id="confirm" class="button button-big button-fill color-green">Submit</a>
+                            </div>
+                          </div>
+
+                        </div>
+                  </div>
+                </div>
+              </div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <!-- Path to Framework7 Library JS-->
+    <!-- Path to your app js-->
+    <!-- All javascript that is needed. -->
+    <!-- Phonegap and framework 7 js, my-app has some app specific that was added to show appointment
+    and the different pages. THIS FILE SHOULD NOT BE EDITED! -->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap-datepicker.min.js"></script>
+    <script src="./js/json-rpc-client.js"></script>
+    <script src="./js/operations.js"></script>
+    <script src="./js/calendar.js"></script>
+
+<!-- The following JS files are editable by us to change the actions of the api and the framweork7 feel. -->
+    <script src="./js/scheduler.js"></script>
+  </body>
+</html>

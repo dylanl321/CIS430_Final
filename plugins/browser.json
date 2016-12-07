@@ -1,0 +1,33 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-calendar": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "edu.asu.djlewi10.asubookme"
+        }
+    },
+    "dependent_plugins": {}
+}
